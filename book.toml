@@ -1,0 +1,6 @@
+[book]
+authors = ["GlitchedDragon"]
+language = "en"
+multilingual = false
+src = "src"
+title = "BoF3 - Data documentation"
