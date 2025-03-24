@@ -50,7 +50,64 @@ Textures can themselves be split into several tiles, with a size not specified i
 ___(This information is probably hardcoded directly when the texture is used)___
 
 ## Palette
-___TODO___
+Palettes are used in textures to provide them colors. They are composed by multiple rows of colors.
+The number of max rows possible in a palette is not defined, ___yet___.
+
+Again, like textures, palettes does not have any header, but you can use the same tools to find their content.
+
+<div style="text-align:center">
+<img src="../DocAssets/PaletteExemple.png" alt="BreathOfFireLogo"/><br/>
+<span style="font-style: italic">Example of a palette</span>
+</div>
+
+Most of the time, palettes are not too far from the textures they are used (in the same EMI file), but for a very few 
+of them, they seem to be loaded once (___NEED TO BE CONFIRMED WITH MORE RESEARCH___).
+
+Generally, when a palette is used:
+- In a 4bpp texture: each row of this palette would be composed with 16 colors,
+- In a 8bpp texture: ___NEED MORE INVESTIGATION___.
+
+> Again, other formats are possible.
+
+Now, each `Color` of the palette is encoded in 16 bits, (more info on [TIM_format](https://wiki.ffrtt.ru/index.php/PSX/TIM_format#CLUT_.28color_lookup_table.29)):
+
+|       RED       |      GREEN      |       BLUE       | STP* |
+|:---------------:|:---------------:|:----------------:|:----:|
+| 0 to 4 (5 bits) | 5 to 9 (5 bits) | 10 to 14 (5bits) |  15  |
+
+The `STP` is the "Special transparency processing": Because by default, the color `Black (r0, g0, b0)` is treated as 
+transparent, unless the STP bit is set to 1.
+
+Now, let's do some code! How to convert those 16 bits color to a more standard 24 bits ?
+```c++
+using u8 = uint8_t;
+using u16 = uint16_t;
+
+// A classic 24 bits color
+struct ColorRgb
+{
+    u8 r{};
+    u8 g{};
+    u8 b{};
+};
+
+ColorRgb Convert16BitsTo24Bits(const u16 pixel)
+{
+    // I'm using at least C++20 here (https://en.cppreference.com/w/cpp/language/aggregate_initialization)
+    // but you can initialize the old fashion way too.
+    return
+    {
+        // ([SBBBBBGGGGGRRRRR] << 3) & 0xF8 = [BBBGGGGGRRRRR000] & [0000000011111000] = [RRRRR000]
+        .r = static_cast<u8>((pixel << 3) & 0xF8),
+        // ([SBBBBBGGGGGRRRRR] >> 2) & 0xF8 = [00SBBBBBGGGGGRRR] & [0000000011111000] = [GGGGG000]
+        .g = static_cast<u8>((pixel >> 2) & 0xF8),
+        // ([SBBBBBGGGGGRRRRR] >> 7) & 0xF8 = [0000000SBBBBBGGG] & [0000000011111000] = [BBBBB000]
+        .b = static_cast<u8>((pixel >> 7) & 0xF8)
+    };
+}
+```
+
+You are now the master of colors!
 
 ## How palettes are used in textures
 ___TODO___

@@ -2,7 +2,7 @@ Breath of Fire 3 - Data documentation
 -------------------------------------
 
 <div style="text-align:center">
-<img src="./DocAssets/Breathlogo.webp"/>
+<img src="./DocAssets/Breathlogo.webp" alt="BreathOfFireLogo"/>
 </div>
 
 In this documentation, you will find all the information on the data and data structures used in [Breath Of Fire 3](https://en.wikipedia.org/wiki/Breath_of_Fire_III).
