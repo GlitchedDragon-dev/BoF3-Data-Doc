@@ -109,8 +109,19 @@ ColorRgb Convert16BitsTo24Bits(const u16 pixel)
 
 You are now the master of colors!
 
+> **TIPS**
+> 
+> Palettes of the games can be found in EMI files by using their `Pointer/RAM` value of the 
+> [EMI's table of content](./1_TheEmiFiles.md#header):
+> > The `Pointer/RAM` of palettes should be between **0x80033XXX** and **0x8003AXXX**.
+
 ## How palettes are used in textures
-___TODO___
+From initial research and results, it would appear that for **4BPP textures**, a row from the palette is applied 
+to a tile of a texture: `1 row of 16 colors == Colors of a single tile`.
+
+Still needs a lot of investigation on this side.
 
 ## Todo - Missing elements
-___TODO___
+- Find where are stored the tiles structure of a texture,
+- Find a way to know which palettes are used in a texture,
+- Find a way to know which rows in palette is used in a tile,

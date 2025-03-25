@@ -96,8 +96,6 @@ To find the next data, I will do:
 
 Between two data, you will see mostly garbage bytes like a series of `2E` or `5F`.
 
-<!--
 ## Libraries and tools
 You can use the [Emi Extractor](https://github.com/glitch-in-the-herring/emi-extractor/) tool made by 
-`Navarchos/RedHerring` to extract the data from your EMI files.
--->
+`Navarchos/Red Herring` to extract the data from your EMI files.
