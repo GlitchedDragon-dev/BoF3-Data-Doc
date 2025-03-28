@@ -2,7 +2,7 @@
 
 <div class="warning">
 This document is still being researched and is not yet complete. 
-This means that some information is erroneous or simply missing.
+This means that some information could be erroneous or simply missing.
 </div>
 
 **Table of content:**

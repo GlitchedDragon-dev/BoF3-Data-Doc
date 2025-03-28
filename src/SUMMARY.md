@@ -10,3 +10,7 @@
 - [Sample audio, Sequencer and Music]()
 - [3D and Map]()
 - [Characters/Monsters/Magics/Items information]()
+
+# Data content
+
+- [STATUS.EMI](DataContent/1_STATUS.EMI.md)
