@@ -57,6 +57,11 @@ In fact, to see the texture properly, you'll need to glue the strips together co
 - A stripe is **256 pixels** wide by **32 pixels** high,
 - This seems to apply to both 4bpp and 8bpp images.
 
+<div style="text-align:center">
+<img src="../DocAssets/StrippedTexture.png" alt="Stripped texture"/><br/>
+<span style="font-style: italic">Example stripped and unstripped texture</span>
+</div>
+
 Here's an algorithm in C++ to perform this transformation `from one data array to another of the same size`:
 
 ```c++
