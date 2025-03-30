@@ -49,6 +49,43 @@ However, in BoF3, two formats in particular stand out:
 Textures can themselves be split into several tiles, with a size not specified in the data.
 ___(This information is probably hardcoded directly when the texture is used)___
 
+
+Now, if you try to visualize a texture with the above information, you'll see elements,
+but in a “broken” way. This is because the texture is composed of “strips”.
+
+In fact, to see the texture properly, you'll need to glue the strips together correctly:
+- A stripe is **256 pixels** wide by **32 pixels** high,
+- This seems to apply to both 4bpp and 8bpp images.
+
+Here's an algorithm in C++ to perform this transformation `from one data array to another of the same size`:
+
+```c++
+u64 ComputeUnstrippedIndex(u64 stripped_index)
+{
+    auto stripped_x = stripped_index % STRIPPED_TEXTURE_WIDTH;
+    auto stripped_y = stripped_index / STRIPPED_TEXTURE_WIDTH;
+
+    auto unstripped_x = stripped_x + ((stripped_y & 0x20) >> 5) * STRIPPED_TEXTURE_WIDTH;
+    auto unstripped_y = (STRIPE_HEIGHT * stripped_y / 64)) + (stripped_y & 0x1F);
+
+    return unstripped_x + unstripped_y * STRIPE_WIDTH;
+}
+
+int main()
+{
+    // Read the stripped texture data, and create another array of the same size (initialized to 0)
+    vector<u8> stripped_texture_data  = ReadData();
+    vector<u8> unstripped_texture_data(input_data.size());
+
+    // We compute the index of each "unstripped" pixel, and push it to the output
+    for(u64 i = 0; i < stripped_texture_data.size(); ++i)
+        unstripped_texture_data[ComputeUnstrippedIndex(i)] = stripped_texture_data[i];
+
+    // Just write the new data in a file, the texture has now a width of 256, with the encoding
+    WriteData(unstripped_texture_data); 
+}
+```
+
 ## Palette
 Palettes are used in textures to provide them colors. They are composed by multiple rows of colors.
 The number of max rows possible in a palette is not defined, ___yet___.
