@@ -167,3 +167,6 @@ Still needs a lot of investigation on this side.
 - Find where are stored the tiles structure of a texture,
 - Find a way to know which palettes are used in a texture,
 - Find a way to know which rows in palette is used in a tile,
+
+**At the moment, I'm a bit stuck on this part, so I started to investigate another file 
+in [STATUS.EMI](../DataContent/1_STATUS.EMI.md).**

@@ -7,8 +7,9 @@ This means that some information could be erroneous or simply missing.
 
 **Table of content:**
 1. [Introduction](#introduction)
-2. [The StatusMenu texture](#the-statusmenu-textures)
-3. [Two palettes for menu](#two-palettes-for-menu)
+2. [The first data (Unknown)](#the-first-data-unknown)
+3. [The StatusMenu texture (2 and 3)](#the-statusmenu-textures-2-and-3)
+4. [Two palettes for menu](#two-palettes-for-menu)
 
 -----------------------------------------------------------
 
@@ -16,7 +17,29 @@ This means that some information could be erroneous or simply missing.
 
 This file represent all the `Status Menu` data, when you press `Square` in game.
 
-## The StatusMenu textures
+The file contains 8 data:
+
+| Index |  Size  |          Type          | Description                                      |
+|:-----:|:------:|:----------------------:|:-------------------------------------------------|
+|   1   | 117578 |          ???           | A big unknown data, seems really important       |
+|   2   | 32768  |         Image          | Texture of the menu tiles                        |
+|   3   | 32768  |         Image          | Texture of the menu backgrounds                  |
+|   4   |  512   |        Palette         | Palette for the menu tiles and backgrounds       |
+|   5   |  512   |        Palette         | Palette for the menu tiles and backgrounds (bis) |
+|   6   |  3616  | Audio Samples (Header) | Audio samples header (menu buttons sounds?)      |
+|   7   |   44   |          ???           | Small unknown file, maybe some pointers inside   |
+|   8   | 64560  | Audio Samples (Binary) | Audio samples binary (menu buttons sounds?)      |
+
+## The first data (Unknown)
+At the moment, I found that this file contains pointers and texts of the menu, and it is now my focus.
+The `RAM Index` of this data is `0x801D0C00`.
+
+The data starts with a `PointerCount`, following by the pointers: Each pointer target a specific place in the file,
+and starts with `0x801D`.
+
+After this list of pointers, we have some short texts, ended each time by the `\0` byte.
+
+## The StatusMenu textures (2 and 3)
 
 This texture is located at the second index of the `STATUS.EMI` file, and contains tiles of:
 - Characters portraits
