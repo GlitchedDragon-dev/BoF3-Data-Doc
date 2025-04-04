@@ -39,6 +39,13 @@ and starts with `0x801D`.
 
 After this list of pointers, we have some short texts, ended each time by the `\0` byte.
 
+> **[Edit 25/04/04]**
+> 
+> The investigation continue here, and looks like we have a lot of interesting data:
+> - Presence multiple palettes pointers (to be confirmed),
+> - A lot of text/messages.
+> I wonder if this file is _maybe_ the whole description of a `Game State` (Like pause, status menu, world map ...)
+
 ## The StatusMenu textures (2 and 3)
 
 This texture is located at the second index of the `STATUS.EMI` file, and contains tiles of:
