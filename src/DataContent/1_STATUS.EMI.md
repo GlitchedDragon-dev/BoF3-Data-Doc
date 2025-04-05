@@ -39,7 +39,7 @@ and starts with `0x801D`.
 
 After this list of pointers, we have some short texts, ended each time by the `\0` byte.
 
-> **[Edit 25/04/04]**
+> **[Edit 2025/04/04]**
 > 
 > The investigation continue here, and looks like we have a lot of interesting data:
 > - Presence multiple palettes pointers (to be confirmed),
