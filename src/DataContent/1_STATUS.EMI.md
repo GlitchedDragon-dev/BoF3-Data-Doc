@@ -38,6 +38,10 @@ This is MIPS code, and there are interactions with the base executable `SLES_...
 
 This executable contains all the menu behavior.
 
+> **EDIT: 2025/04/06**
+> 
+> The function FUN_8014E3D4 do something with palettes! Need to know what ~
+
 ## The StatusMenu textures (2 and 3)
 
 This texture is located at the second index of the `STATUS.EMI` file, and contains tiles of:
