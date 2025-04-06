@@ -5,7 +5,8 @@
 # Data structures
 
 - [The "EMI" files format](./DataStructures/1_TheEmiFiles.md)
-- [Texture and Palette](./DataStructures/2_TextureAndPalette.md)
+- [GameMode executable](./DataStructures/2_GameModeExecutable.md)
+- [Texture and Palette](./DataStructures/3_TextureAndPalette.md)
 - [Text and Dialog]()
 - [Sample audio, Sequencer and Music]()
 - [3D and Map]()

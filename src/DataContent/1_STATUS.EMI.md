@@ -7,7 +7,7 @@ This means that some information could be erroneous or simply missing.
 
 **Table of content:**
 1. [Introduction](#introduction)
-2. [The first data (Unknown)](#the-first-data-unknown)
+2. [The first data: Executable of the current game mode](#the-first-data-executable-of-the-current-game-mode-statusmenu)
 3. [The StatusMenu texture (2 and 3)](#the-statusmenu-textures-2-and-3)
 4. [Two palettes for menu](#two-palettes-for-menu)
 
@@ -21,7 +21,7 @@ The file contains 8 data:
 
 | Index |  Size  |          Type          | Description                                      |
 |:-----:|:------:|:----------------------:|:-------------------------------------------------|
-|   1   | 117578 |          ???           | A big unknown data, seems really important       |
+|   1   | 117578 |       Executable       | Executable of the current game mode `StatusMenu` |
 |   2   | 32768  |         Image          | Texture of the menu tiles                        |
 |   3   | 32768  |         Image          | Texture of the menu backgrounds                  |
 |   4   |  512   |        Palette         | Palette for the menu tiles and backgrounds       |
@@ -30,21 +30,13 @@ The file contains 8 data:
 |   7   |   44   |          ???           | Small unknown file, maybe some pointers inside   |
 |   8   | 64560  | Audio Samples (Binary) | Audio samples binary (menu buttons sounds?)      |
 
-## The first data (Unknown)
-At the moment, I found that this file contains pointers and texts of the menu, and it is now my focus.
+## The first data: Executable of the current game mode `StatusMenu`
 The `RAM Index` of this data is `0x801D0C00`.
 
-The data starts with a `PointerCount`, following by the pointers: Each pointer target a specific place in the file,
-and starts with `0x801D`.
+This data is actually the “StatusMenu” game mode executable.
+This is MIPS code, and there are interactions with the base executable `SLES_......`.
 
-After this list of pointers, we have some short texts, ended each time by the `\0` byte.
-
-> **[Edit 2025/04/04]**
-> 
-> The investigation continue here, and looks like we have a lot of interesting data:
-> - Presence multiple palettes pointers (to be confirmed),
-> - A lot of text/messages.
-> I wonder if this file is _maybe_ the whole description of a `Game State` (Like pause, status menu, world map ...)
+This executable contains all the menu behavior.
 
 ## The StatusMenu textures (2 and 3)
 

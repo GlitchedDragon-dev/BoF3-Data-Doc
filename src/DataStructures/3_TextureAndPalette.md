@@ -98,7 +98,7 @@ The number of max rows possible in a palette is not defined, ___yet___.
 Again, like textures, palettes does not have any header, but you can use the same tools to find their content.
 
 <div style="text-align:center">
-<img src="../DocAssets/PaletteExemple.png" alt="Palette"/><br/>
+<img src="../DocAssets/PaletteExample.png" alt="Palette"/><br/>
 <span style="font-style: italic">Example of a palette</span>
 </div>
 
