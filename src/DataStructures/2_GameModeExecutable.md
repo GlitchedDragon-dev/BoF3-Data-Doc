@@ -29,8 +29,8 @@ You've gone from GameMode `Map` to GameMode `StatusMenu`.
 
 But how does this change translate into game code?
 
-## A GameMode is an executable
-Each GameMode is its own executable and will describe:
+## A GameMode is an executable `PSX Overlay`
+Each GameMode is its own executable [`PSX Overlay`](https://github.com/JaberwockySeamonstah/PSXOverlayExample/blob/main/README.md) and will describe:
 - How the user interacts with this mode,
 - How the screen should be drawn,
 - Are there any particular sounds to play,
